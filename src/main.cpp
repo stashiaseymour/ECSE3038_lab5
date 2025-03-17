@@ -40,9 +40,9 @@ void setup() {
 
 void loop() {
   if (WiFi.status() == WL_CONNECTED) {
-    // Create a secure client for HTTPS communication
+    
     WiFiClientSecure client;
-    client.setInsecure(); // Bypass SSL verification (for testing)
+    client.setInsecure(); 
 
     HTTPClient https;
 
@@ -53,7 +53,7 @@ void loop() {
     
     int httpCode = https.GET();
 
-    if (httpCode > 0) { // If request is successful
+    if (httpCode > 0) { 
       Serial.print("HTTP Code: ");
       Serial.println(httpCode);
 
@@ -65,7 +65,7 @@ void loop() {
         StaticJsonDocument<200> doc;
         DeserializationError error = deserializeJson(doc, payload);
         if (!error) {
-          // Extract the two lines from the JSON response
+          // Extraction of the two lines from the JSON response
           const char* line1 = doc["line_1"];
           const char* line2 = doc["line_2"];
 
